@@ -14,7 +14,7 @@ const Dashboard = () => {
   const fetchAppointments = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/app/v1/appointment/getall",
+        "https://hospmang-backend.onrender.com/app/v1/appointment/getall",
         { withCredentials: true }
       );
       setAppointments(data.appointment);
@@ -35,7 +35,7 @@ const Dashboard = () => {
     console.log(status);
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/app/v1/appointment/update/${appointmentId}`,
+        `https://hospmang-backend.onrender.com/app/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );
