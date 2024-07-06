@@ -12,6 +12,7 @@ import {Context} from './main.jsx';
 import axios from 'axios'
 import Sidebar from './Components/Sidebar.jsx';
 import DashboardPage from './pages/dashboardPage.jsx';
+import Login from '../../frontend/src/Pages/Login.jsx';
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
         <Sidebar/>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/" element={<DashboardPage />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/doctor/addnew" element={<AddNewDoctor />} />

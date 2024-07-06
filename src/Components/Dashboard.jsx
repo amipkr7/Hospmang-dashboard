@@ -68,7 +68,7 @@ const Dashboard = () => {
             <div className="content">
               <div>
                 <p>Hello ,</p>
-                <h5>{admin && `${admin.firstName} ${admin.lastName}`} </h5>
+                <h5>Admin </h5>
               </div>
               <p>
                 Welcome to the United Group of Medical Sciences...

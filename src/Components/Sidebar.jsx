@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { useNavigate } from "react-router-dom";
 import '../../src/App.css'
+import { FaSignInAlt } from 'react-icons/fa';
+
 
 const Sidebar = () => {
   const [show, setShow] = useState(true);
@@ -37,6 +39,10 @@ const Sidebar = () => {
     navigateTo("/");
     setShow(!show);
   };
+  const login=()=>{
+    navigateTo("/login");
+    setShow(!show);
+  }
   const gotoDoctorsPage = () => {
     navigateTo("/doctors");
     setShow(!show);
@@ -62,6 +68,7 @@ const Sidebar = () => {
         className={show ? "show sidebar" : "sidebar"}
       >
         <div className="links">
+          <FaSignInAlt onClick={login}/>
           <TiHome onClick={gotoHomePage} />
           <FaUserDoctor onClick={gotoDoctorsPage} />
           <MdAddModerator onClick={gotoAddNewAdmin} />
