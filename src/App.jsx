@@ -12,7 +12,7 @@ import {Context} from './main.jsx';
 import axios from 'axios'
 import Sidebar from './Components/Sidebar.jsx';
 import DashboardPage from './pages/dashboardPage.jsx';
-import Login from '../../frontend/src/Pages/Login.jsx';
+
 
 
 const App = () => {
