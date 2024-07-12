@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import './Community.css'; // Import the CSS file
+import './App.css'; // Import the CSS file
 
-function Community() {
+function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("https://hospmang-backend.onrender.com", {
-      transports: ['websocket', 'polling'],
-    });
+    const newSocket = io("https://hospmang-backend.onrender.com");
     setSocket(newSocket);
 
-    newSocket.on("connect", () => {
-      console.log("Connected to the server");
-    });
-
-    newSocket.on("connect_error", (err) => {
-      console.error("Connection Error:", err);
-    });
-
-    newSocket.on("error", (err) => {
-      console.error("Socket Error:", err);
-    });
-
+    // Event listener for incoming chat messages
     newSocket.on("chatMessage", (message) => {
       console.log("Received message:", message);
       setMessages((prevMessages) => [...prevMessages, message]);
     });
 
+    // Event listener for welcome message
     newSocket.on("welcome", (message) => {
       console.log("Server:", message);
     });
@@ -40,13 +28,17 @@ function Community() {
   }, []);
 
   const handleInputChange = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     setInput(e.target.value);
   };
 
   const handleSend = () => {
     if (input.trim()) {
+      // Emit message to the server
       socket.emit("message", input);
+
+      // Update local state
+      // setMessages((prevMessages) => [...prevMessages, { id: socket.id, message: input }]);
       setInput('');
     }
   };
@@ -78,4 +70,4 @@ function Community() {
   );
 }
 
-export default Community;
+export default App;
