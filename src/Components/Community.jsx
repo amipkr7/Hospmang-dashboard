@@ -21,13 +21,15 @@ function Community() {
       console.error("Connection Error:", err);
     });
 
-    // Event listener for incoming chat messages
+    newSocket.on("error", (err) => {
+      console.error("Socket Error:", err);
+    });
+
     newSocket.on("chatMessage", (message) => {
       console.log("Received message:", message);
       setMessages((prevMessages) => [...prevMessages, message]);
     });
 
-    // Event listener for welcome message
     newSocket.on("welcome", (message) => {
       console.log("Server:", message);
     });
@@ -38,17 +40,13 @@ function Community() {
   }, []);
 
   const handleInputChange = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setInput(e.target.value);
   };
 
   const handleSend = () => {
     if (input.trim()) {
-      // Emit message to the server
       socket.emit("message", input);
-
-      // Update local state
-      // setMessages((prevMessages) => [...prevMessages, { id: socket.id, message: input }]);
       setInput('');
     }
   };
