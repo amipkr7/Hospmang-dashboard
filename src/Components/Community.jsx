@@ -8,7 +8,7 @@ function Community() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("https://hospmang-backend.onrender.com");
+    const newSocket = io("https://hospmang-backend.onrender.com/community");
     setSocket(newSocket);
 
     // Event listener for incoming chat messages
