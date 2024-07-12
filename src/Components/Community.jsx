@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import './App.css'; // Import the CSS file
+import './Community.css'; // Import the CSS file
 
 function App() {
   const [messages, setMessages] = useState([]);
