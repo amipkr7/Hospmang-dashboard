@@ -8,7 +8,7 @@ function Community() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("https://hospmang-backend.onrender.com/community", {
+    const newSocket = io("https://hospmang-backend.onrender.com", {
       transports: ['websocket', 'polling'],
     });
     setSocket(newSocket);
