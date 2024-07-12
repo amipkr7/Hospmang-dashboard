@@ -8,8 +8,18 @@ function Community() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("https://hospmang-backend.onrender.com/community");
+    const newSocket = io("https://hospmang-backend.onrender.com/community", {
+      transports: ['websocket', 'polling'],
+    });
     setSocket(newSocket);
+
+    newSocket.on("connect", () => {
+      console.log("Connected to the server");
+    });
+
+    newSocket.on("connect_error", (err) => {
+      console.error("Connection Error:", err);
+    });
 
     // Event listener for incoming chat messages
     newSocket.on("chatMessage", (message) => {
