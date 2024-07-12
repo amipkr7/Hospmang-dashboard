@@ -12,6 +12,7 @@ import { Context } from "../main";
 import { useNavigate } from "react-router-dom";
 import '../../src/App.css'
 import { FaSignInAlt } from 'react-icons/fa';
+import { FaUser } from "react-icons/fa6";
 
 
 const Sidebar = () => {
@@ -59,6 +60,10 @@ const Sidebar = () => {
     navigateTo("/admin/addnew");
     setShow(!show);
   };
+  const gotoCommunity=()=>{
+    navigateTo("/community")
+    setShow(!show);
+  }
   console.log("Rendering Sidebar component")
 
   return (
@@ -75,6 +80,7 @@ const Sidebar = () => {
           <IoPersonAddSharp onClick={gotoAddNewDoctor} />
           <AiFillMessage onClick={gotoMessagesPage} />
           <RiLogoutBoxFill onClick={handleLogout} />
+          <FaUser onClick={gotoCommunity} />
         </div>
       </nav>
       <div

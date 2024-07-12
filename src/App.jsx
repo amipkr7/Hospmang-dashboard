@@ -12,6 +12,7 @@ import {Context} from './main.jsx';
 import axios from 'axios'
 import Sidebar from './Components/Sidebar.jsx';
 import DashboardPage from './pages/dashboardPage.jsx';
+import Community from './Components/Community.jsx';
 
 
 
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/admin/addnew" element={<AddNewAdmin />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/doctors" element={<Doctors />} />
+        <Route path="/community" element={< Community/>} />
       </Routes>
       <ToastContainer position="top-center" />
     </Router>
