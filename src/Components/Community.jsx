@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import './Community.css'; // Import the CSS file
 
-function App() {
+function Community() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [socket, setSocket] = useState(null);
@@ -70,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default Community;
