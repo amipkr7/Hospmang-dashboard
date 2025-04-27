@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
-import './Community.css';
+import React, { useEffect, useState } from "react";
+import { io } from "socket.io-client";
+import "./Community.css";
 
 function Community() {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io(`https://hospmang-backend.onrender.com:${5001}`, {
+    const newSocket = io(`http://localhost:5000:${5001}`, {
       path: "/socket.io",
-      transports: ['websocket', 'polling']
+      transports: ["websocket", "polling"],
     });
     setSocket(newSocket);
 
@@ -48,7 +48,7 @@ function Community() {
   const handleSend = () => {
     if (input.trim()) {
       socket.emit("message", input);
-      setInput('');
+      setInput("");
     }
   };
 
@@ -59,9 +59,12 @@ function Community() {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={`message ${msg.id === socket.id ? 'my-message' : 'other-message'}`}
+              className={`message ${
+                msg.id === socket.id ? "my-message" : "other-message"
+              }`}
             >
-              <strong>{msg.id === socket.id ? 'Me' : 'Other'}: </strong>{msg.message}
+              <strong>{msg.id === socket.id ? "Me" : "Other"}: </strong>
+              {msg.message}
             </div>
           ))}
         </div>

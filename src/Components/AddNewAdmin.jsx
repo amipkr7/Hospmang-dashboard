@@ -3,7 +3,7 @@ import { Context } from "../main";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import logo from '../Photos/logo.png'
+import logo from "../Photos/logo.png";
 import Sidebar from "./Sidebar";
 
 const AddNewAdmin = () => {
@@ -25,7 +25,7 @@ const AddNewAdmin = () => {
     try {
       await axios
         .post(
-          "https://hospmang-backend.onrender.com/api/v1/user/admin/addnew",
+          "http://localhost:5000/api/v1/user/admin/addnew",
           { firstName, lastName, email, phone, nic, dob, gender, password },
           {
             withCredentials: true,
@@ -56,73 +56,76 @@ const AddNewAdmin = () => {
 
   return (
     <>
-    <section className="page">
-      <section className="container form-component add-admin-form">
-      <img src={logo} alt="logo" className="logo"/>
-        <h1 className="form-title">ADD NEW ADMIN</h1>
-        <form onSubmit={handleAddNewAdmin}>
-          <div>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+      <section className="page">
+        <section className="container form-component add-admin-form">
+          {/* <img src={logo} alt="logo" className="logo" /> */}
+          <h1 className="form-title">ADD NEW ADMIN</h1>
+          <form onSubmit={handleAddNewAdmin}>
+            <div>
+              <input
+                type="text"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Mobile Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="number"
-              placeholder="NIC"
-              value={nic}
-              onChange={(e) => setNic(e.target.value)}
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
-            <input
-              type={"date"}
-              placeholder="Date of Birth"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-          </div>
-          <div>
-            <select value={gender} onChange={(e) => setGender(e.target.value)}>
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              <input
+                type="number"
+                placeholder="Mobile Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
-          </div>
-          <div style={{ justifyContent: "center", alignItems: "center" }}>
-            <button type="submit">ADD NEW ADMIN</button>
-          </div>
-        </form>
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Aadhaar"
+                value={nic}
+                onChange={(e) => setNic(e.target.value)}
+              />
+              <input
+                type={"date"}
+                placeholder="Date of Birth"
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
+              />
+            </div>
+            <div>
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div style={{ justifyContent: "center", alignItems: "center" }}>
+              <button type="submit">ADD NEW ADMIN</button>
+            </div>
+          </form>
+        </section>
       </section>
-    </section>
-  </>
+    </>
   );
 };
 

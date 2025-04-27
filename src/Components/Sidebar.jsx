@@ -10,10 +10,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import { useNavigate } from "react-router-dom";
-import '../../src/App.css'
-import { FaSignInAlt } from 'react-icons/fa';
+import "../../src/App.css";
+import { FaSignInAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
-
 
 const Sidebar = () => {
   const [show, setShow] = useState(true);
@@ -22,7 +21,7 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     await axios
-      .get("https://hospmang-backend.onrender.com/api/v1/user/admin/logout/me", {
+      .get("http://localhost:5000/api/v1/user/admin/logout/me", {
         withCredentials: true,
       })
       .then((res) => {
@@ -40,10 +39,10 @@ const Sidebar = () => {
     navigateTo("/");
     setShow(!show);
   };
-  const login=()=>{
+  const login = () => {
     navigateTo("/login");
     setShow(!show);
-  }
+  };
   const gotoDoctorsPage = () => {
     navigateTo("/doctors");
     setShow(!show);
@@ -60,11 +59,11 @@ const Sidebar = () => {
     navigateTo("/admin/addnew");
     setShow(!show);
   };
-  const gotoCommunity=()=>{
-    navigateTo("/community")
+  const gotoCommunity = () => {
+    navigateTo("/community");
     setShow(!show);
-  }
-  console.log("Rendering Sidebar component")
+  };
+  console.log("Rendering Sidebar component");
 
   return (
     <>
@@ -73,10 +72,10 @@ const Sidebar = () => {
         className={show ? "show sidebar" : "sidebar"}
       >
         <div className="links">
-          <FaSignInAlt onClick={login}/>
+          <FaSignInAlt onClick={login} />
           <TiHome onClick={gotoHomePage} />
           <FaUserDoctor onClick={gotoDoctorsPage} />
-          <MdAddModerator onClick={gotoAddNewAdmin} />
+          {/* <MdAddModerator onClick={gotoAddNewAdmin} /> */}
           <IoPersonAddSharp onClick={gotoAddNewDoctor} />
           <AiFillMessage onClick={gotoMessagesPage} />
           <RiLogoutBoxFill onClick={handleLogout} />
